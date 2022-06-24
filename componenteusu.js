@@ -8,20 +8,20 @@ class componenteusu extends HTMLElement {
     const api = async ( page ) => {
 
         const URL = `https://reqres.in/api/users?page=${page}`;
-         return await fetch(URL).then((res) => res.json());
+        return await fetch(URL).then((res) => res.json());
+
 
     };
-  if(localStorage.getItem("usu") !== null){
+
     Promise.all([api( 1 ), api( 2 )]).then(([users1, users2]) => {
         arrayUsu = [...users1.data, ...users2.data];
         localStorage.setItem("usu", JSON.stringify(arrayUsu))
         data1(arrayUsu)
     });
-  }else{
 
-  }
    
     const data1 = (arrayUsu) => {
+
       arrayUsu.map((value) => {
         this.innerHTML += `
                 <div class="cartas">
